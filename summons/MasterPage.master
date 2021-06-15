@@ -1,0 +1,88 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+     <script>
+        function GetUserValue() {
+            var person = prompt("請再次輸入傳票編號，確認後刪除!", "");
+            if (person != null && person != "") {
+                document.getElementById('MainContent_HiddenField1').value = person;
+                return true;
+            }
+            else
+                return false;
+        }
+    </script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .txtStyle {
+            font-size: larger;
+        }
+        .style1 {
+            width: 80%;
+            text-align: center;
+        }
+        .style2 {
+            background-color: #008080;
+            font-size: xx-large;
+            color: #FFFFFF;
+            text-align: center;
+            width: 100%;
+            font-weight: bold;
+        }
+
+	.style4
+        {
+            font-family: 微軟正黑體;
+            background-color: #669900;
+        }
+        .style5
+        {
+            font-size: xx-large;
+            color: #FFFFFF;
+            height: 21px;
+            background-color: #FFFF99;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+            <table class="style1">
+            <tr>
+                    <td class="style2">&nbsp; <span class="style4">借用系統</span></td>
+            </tr>
+            <tr>
+                    <td class="style5">
+                        <asp:Menu ID="Menu1" runat="server" BackColor="#CCFF66" DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="x-large" ForeColor="#7C6F57" Orientation="Horizontal" StaticSubMenuIndent="15px" CssClass="style3">
+                            <DynamicHoverStyle BackColor="#7C6F57" ForeColor="White" />
+                            <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                            <DynamicMenuStyle BackColor="#F7F6F3" />
+                            <DynamicSelectedStyle BackColor="#5D7B9D" />
+                        <Items>
+                            <asp:MenuItem NavigateUrl="~/Main.aspx" Text="傳票借閱" Value="傳票借閱"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Tbassact.aspx" Text="單位財產借用" Value="單位財產借用"></asp:MenuItem>
+                            <asp:MenuItem Text="查詢" Value="查詢"></asp:MenuItem>
+                        </Items>
+                            <StaticHoverStyle BackColor="#7C6F57" ForeColor="White" />
+                            <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                            <StaticSelectedStyle BackColor="#5D7B9D" />
+                    </asp:Menu>
+                </td>
+            </tr>
+            <tr>
+                    <td class="style3">
+                    <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                    </asp:ContentPlaceHolder>
+                </td>
+            </tr>
+        </table>
+    </div>
+    </form>
+</body>
+</html>
